@@ -1,0 +1,21 @@
+<section data-ng-controller="FigsController" data-ng-init="find()">
+  <ul class="figs unstyled">
+    <li data-ng-repeat="fig in figs">
+      <span>{{fig.created | date:'medium'}}</span> /
+      <span>{{fig.user.name}}</span>
+      <h2>
+        <a data-ng-href="#!/figs/{{fig._id}}">{{fig.title}}</a>
+        <span data-ng-if="hasAuthorization(fig)">
+          <a class="btn" href="/#!/figs/{{fig._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn" data-ng-click="remove(fig);">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </span>
+      </h2>
+      <div>{{fig.content}}</div>
+    </li>
+  </ul>
+  <h1 data-ng-hide="!figs || figs.length">No figs yet. <br> Why don't you <a href="/#!/figs/create">Create One</a>?</h1>
+</section>

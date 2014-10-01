@@ -6,19 +6,19 @@
 var should = require('should'),
   mongoose = require('mongoose'),
   User = mongoose.model('User'),
-  Article = mongoose.model('Article');
+  Fig = mongoose.model('Fig');
 
 /**
  * Globals
  */
 var user;
-var article;
+var fig;
 
 /**
  * Test Suites
  */
 describe('<Unit Test>', function() {
-  describe('Model Article:', function() {
+  describe('Model Fig:', function() {
     beforeEach(function(done) {
       user = new User({
         name: 'Full name',
@@ -28,9 +28,9 @@ describe('<Unit Test>', function() {
       });
 
       user.save(function() {
-        article = new Article({
-          title: 'Article Title',
-          content: 'Article Content',
+        fig = new Fig({
+          title: 'Fig Title',
+          content: 'Fig Content',
           user: user
         });
 
@@ -40,38 +40,38 @@ describe('<Unit Test>', function() {
 
     describe('Method Save', function() {
       it('should be able to save without problems', function(done) {
-        return article.save(function(err) {
+        return fig.save(function(err) {
           should.not.exist(err);
-          article.title.should.equal('Article Title');
-          article.content.should.equal('Article Content');
-          article.user.should.not.have.length(0);
-          article.created.should.not.have.length(0);
+          fig.title.should.equal('Fig Title');
+          fig.content.should.equal('Fig Content');
+          fig.user.should.not.have.length(0);
+          fig.created.should.not.have.length(0);
           done();
         });
       });
 
       it('should be able to show an error when try to save without title', function(done) {
-        article.title = '';
+        fig.title = '';
 
-        return article.save(function(err) {
+        return fig.save(function(err) {
           should.exist(err);
           done();
         });
       });
 
       it('should be able to show an error when try to save without content', function(done) {
-        article.content = '';
+        fig.content = '';
 
-        return article.save(function(err) {
+        return fig.save(function(err) {
           should.exist(err);
           done();
         });
       });
 
       it('should be able to show an error when try to save without user', function(done) {
-        article.user = {};
+        fig.user = {};
 
-        return article.save(function(err) {
+        return fig.save(function(err) {
           should.exist(err);
           done();
         });
@@ -80,7 +80,7 @@ describe('<Unit Test>', function() {
     });
 
     afterEach(function(done) {
-      article.remove();
+      fig.remove();
       user.remove();
       done();
     });

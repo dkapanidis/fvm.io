@@ -1,7 +1,7 @@
 'use strict';
 
 //Setting up route
-angular.module('mean.articles').config(['$stateProvider',
+angular.module('mean.figs').config(['$stateProvider',
   function($stateProvider) {
     // Check if the user is connected
     var checkLoggedin = function($q, $timeout, $http, $location) {
@@ -25,30 +25,30 @@ angular.module('mean.articles').config(['$stateProvider',
 
     // states for my app
     $stateProvider
-      .state('all articles', {
-        url: '/articles',
-        templateUrl: 'articles/views/list.html',
+      .state('all figs', {
+        url: '/figs',
+        templateUrl: 'figs/views/list.html',
         resolve: {
           loggedin: checkLoggedin
         }
       })
-      .state('create article', {
-        url: '/articles/create',
-        templateUrl: 'articles/views/create.html',
+      .state('create fig', {
+        url: '/figs/create',
+        templateUrl: 'figs/views/create.html',
         resolve: {
           loggedin: checkLoggedin
         }
       })
-      .state('edit article', {
-        url: '/articles/:articleId/edit',
-        templateUrl: 'articles/views/edit.html',
+      .state('edit fig', {
+        url: '/figs/:figId/edit',
+        templateUrl: 'figs/views/edit.html',
         resolve: {
           loggedin: checkLoggedin
         }
       })
-      .state('article by id', {
-        url: '/articles/:articleId',
-        templateUrl: 'articles/views/view.html',
+      .state('fig by id', {
+        url: '/figs/:figId',
+        templateUrl: 'figs/views/view.html',
         resolve: {
           loggedin: checkLoggedin
         }

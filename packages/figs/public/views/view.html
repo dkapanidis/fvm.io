@@ -1,0 +1,14 @@
+<section data-ng-controller="FigsController" data-ng-init="findOne()">
+  <span>{{fig.created | date:'medium'}}</span> /
+  <span>{{fig.user.name}}</span>
+  <h2>{{fig.title}}</h2>
+  <div data-ng-if="hasAuthorization(fig)">
+    <a class="btn" href="/#!/figs/{{fig._id}}/edit">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn" data-ng-click="remove(fig);">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <div>{{fig.content}}</div>
+</section>
