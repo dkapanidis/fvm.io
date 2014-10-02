@@ -28,4 +28,4 @@ ADD . /home/mean
 ENV NODE_ENV development
 
 EXPOSE 3000
-CMD ["forever", "server.js"]
+CMD ["grunt"]
