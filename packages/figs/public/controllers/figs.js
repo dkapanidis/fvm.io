@@ -13,6 +13,7 @@ angular.module('mean.figs').controller('FigsController', ['$scope', '$stateParam
       if (isValid) {
         var fig = new Figs({
           title: this.title,
+          version: this.version,
           content: this.content
         });
         fig.$save(function(response) {
@@ -20,6 +21,7 @@ angular.module('mean.figs').controller('FigsController', ['$scope', '$stateParam
         });
 
         this.title = '';
+        this.version = '';
         this.content = '';
       } else {
         $scope.submitted = true;
