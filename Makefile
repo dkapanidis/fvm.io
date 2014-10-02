@@ -1,2 +1,2 @@
 build:
-	docker build . -t quay.io/harbur/fpm .
+	docker build -t quay.io/harbur/fpm .
