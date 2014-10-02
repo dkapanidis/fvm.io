@@ -2,6 +2,9 @@ FROM dockerfile/nodejs
 
 MAINTAINER Dimitris Kapanidis <d.kapanidis@gmail.com>
 
+# Needed for PhantomJS (http://www.dorukdestan.com/blog/phantomjs-installation-on-lxc/)
+RUN apt-get update -y && apt-get install -y libfreetype6 libfontconfig && apt-get clean
+
 WORKDIR /home/mean
 
 # Install Mean.JS Prerequisites
