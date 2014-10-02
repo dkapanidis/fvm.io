@@ -54,7 +54,7 @@
 
           // test expected GET request
           $httpBackend.expectGET('figs').respond([{
-            title: 'An Fig about MEAN',
+            name: 'An Fig about MEAN',
             content: 'MEAN rocks!'
           }]);
 
@@ -64,7 +64,7 @@
 
           // test scope value
           expect(scope.figs).toEqualData([{
-            title: 'An Fig about MEAN',
+            name: 'An Fig about MEAN',
             content: 'MEAN rocks!'
           }]);
 
@@ -78,7 +78,7 @@
           // fixture response object
           var testFigData = function() {
             return {
-              title: 'An Fig about MEAN',
+              name: 'An Fig about MEAN',
               content: 'MEAN rocks!'
             };
           };
@@ -102,7 +102,7 @@
           // fixture expected POST data
           var postFigData = function() {
             return {
-              title: 'An Fig about MEAN',
+              name: 'An Fig about MEAN',
               content: 'MEAN rocks!'
             };
           };
@@ -111,13 +111,13 @@
           var responseFigData = function() {
             return {
               _id: '525cf20451979dea2c000001',
-              title: 'An Fig about MEAN',
+              name: 'An Fig about MEAN',
               content: 'MEAN rocks!'
             };
           };
 
           // fixture mock form input values
-          scope.title = 'An Fig about MEAN';
+          scope.name = 'An Fig about MEAN';
           scope.content = 'MEAN rocks!';
 
           // test post request is sent
@@ -128,7 +128,7 @@
           $httpBackend.flush();
 
           // test form input(s) are reset
-          expect(scope.title).toEqual('');
+          expect(scope.name).toEqual('');
           expect(scope.content).toEqual('');
 
           // test URL location to new object
@@ -141,7 +141,7 @@
         var putFigData = function() {
           return {
             _id: '525a8422f6d0f87f0e407a33',
-            title: 'An Fig about MEAN',
+            name: 'An Fig about MEAN',
             to: 'MEAN is great!'
           };
         };
@@ -159,8 +159,8 @@
         //$httpBackend.expectPUT(/figs\/([0-9a-fA-F]{24})$/, putFigData()).respond();
         /*
                 Error: Expected PUT /figs\/([0-9a-fA-F]{24})$/ with different data
-                EXPECTED: {"_id":"525a8422f6d0f87f0e407a33","title":"An Fig about MEAN","to":"MEAN is great!"}
-                GOT:      {"_id":"525a8422f6d0f87f0e407a33","title":"An Fig about MEAN","to":"MEAN is great!","updated":[1383534772975]}
+                EXPECTED: {"_id":"525a8422f6d0f87f0e407a33","name":"An Fig about MEAN","to":"MEAN is great!"}
+                GOT:      {"_id":"525a8422f6d0f87f0e407a33","name":"An Fig about MEAN","to":"MEAN is great!","updated":[1383534772975]}
                 */
 
         // run controller

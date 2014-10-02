@@ -29,7 +29,7 @@ describe('<Unit Test>', function() {
 
       user.save(function() {
         fig = new Fig({
-          title: 'Fig Title',
+          name: 'Fig Name',
           content: 'Fig Content',
           version: '1.0.0',
           user: user
@@ -43,7 +43,7 @@ describe('<Unit Test>', function() {
       it('should be able to save without problems', function(done) {
         return fig.save(function(err) {
           should.not.exist(err);
-          fig.title.should.equal('Fig Title');
+          fig.name.should.equal('Fig Name');
           fig.content.should.equal('Fig Content');
           fig.user.should.not.have.length(0);
           fig.created.should.not.have.length(0);
@@ -51,8 +51,8 @@ describe('<Unit Test>', function() {
         });
       });
 
-      it('should be able to show an error when try to save without title', function(done) {
-        fig.title = '';
+      it('should be able to show an error when try to save without name', function(done) {
+        fig.name = '';
 
         return fig.save(function(err) {
           should.exist(err);
