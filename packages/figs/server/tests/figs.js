@@ -31,6 +31,7 @@ describe('<Unit Test>', function() {
         fig = new Fig({
           title: 'Fig Title',
           content: 'Fig Content',
+          version: '1.0.0',
           user: user
         });
 
