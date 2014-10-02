@@ -15,7 +15,7 @@ var FigSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  title: {
+  name: {
     type: String,
     required: true,
     trim: true
@@ -39,8 +39,8 @@ var FigSchema = new Schema({
 /**
  * Validations
  */
-FigSchema.path('title').validate(function(title) {
-  return !!title;
+FigSchema.path('name').validate(function(name) {
+  return !!name;
 }, 'Title cannot be blank');
 
 FigSchema.path('content').validate(function(content) {

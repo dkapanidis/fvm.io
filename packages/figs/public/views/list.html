@@ -4,7 +4,7 @@
       <span>{{fig.created | date:'medium'}}</span> /
       <span>{{fig.user.name}}</span>
       <h2>
-        <a data-ng-href="#!/figs/{{fig._id}}">{{fig.title}}</a>
+        <a data-ng-href="#!/figs/{{fig._id}}">{{fig.name}}</a>
         <span data-ng-if="hasAuthorization(fig)">
           <a class="btn" href="/#!/figs/{{fig._id}}/edit">
             <i class="glyphicon glyphicon-edit"></i>

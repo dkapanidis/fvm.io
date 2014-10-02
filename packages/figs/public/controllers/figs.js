@@ -12,7 +12,7 @@ angular.module('mean.figs').controller('FigsController', ['$scope', '$stateParam
     $scope.create = function(isValid) {
       if (isValid) {
         var fig = new Figs({
-          title: this.title,
+          name: this.name,
           version: this.version,
           content: this.content
         });
@@ -20,7 +20,7 @@ angular.module('mean.figs').controller('FigsController', ['$scope', '$stateParam
           $location.path('figs/' + response._id);
         });
 
-        this.title = '';
+        this.name = '';
         this.version = '';
         this.content = '';
       } else {

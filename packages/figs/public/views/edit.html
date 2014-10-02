@@ -1,11 +1,11 @@
 <section data-ng-controller="FigsController" data-ng-init="findOne()">
   <form name="figForm" class="form-horizontal col-md-6" role="form" data-ng-submit="update(figForm.$valid)" novalidate>
-    <div class="form-group" ng-class="{ 'has-error' : submitted && figForm.title.$invalid }">
-      <label mean-token="'edit-title'" for="title" class="col-md-2 control-label">Title</label>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && figForm.name.$invalid }">
+      <label mean-token="'edit-name'" for="name" class="col-md-2 control-label">Name</label>
       <div class="col-md-10">
-        <input name="title" type="text" class="form-control" data-ng-model="fig.title" id="title" placeholder="Title" required>
-        <div ng-show="submitted && figForm.title.$invalid" class="help-block">
-          <p ng-show="figForm.title.$error.required">Title is required</p>
+        <input name="name" type="text" class="form-control" data-ng-model="fig.name" id="name" placeholder="Name" required>
+        <div ng-show="submitted && figForm.name.$invalid" class="help-block">
+          <p ng-show="figForm.name.$error.required">Name is required</p>
         </div>
       </div>
 
