@@ -15,11 +15,13 @@ module.exports = function(Figs, app, auth) {
   app.route('/figs')
     .get(figs.all)
     .post(auth.requiresLogin, figs.create);
-  app.route('/figs/:figId')
-    .get(figs.show)
+  // app.route('/figs/:figId')
+    // .get(figs.show)
+  app.route('/figs/:user')
+    .get(figs.showUserFigs)
     .put(auth.requiresLogin, hasAuthorization, figs.update)
     .delete(auth.requiresLogin, hasAuthorization, figs.destroy);
 
   // Finish with setting up the figId param
-  app.param('figId', figs.fig);
+  // app.param('user', figs.fig);
 };

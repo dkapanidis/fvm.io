@@ -5,6 +5,7 @@
  */
 var mongoose = require('mongoose'),
   Fig = mongoose.model('Fig'),
+  User = mongoose.model('User'),
   _ = require('lodash');
 
 
@@ -79,6 +80,23 @@ exports.destroy = function(req, res) {
  */
 exports.show = function(req, res) {
   res.json(req.fig);
+};
+
+/**
+ * List of figs from user
+ */
+exports.showUserFigs = function(req, res) {
+  User.findOne({username: req.params.user}, function(err, user) {
+    var userId = user? user._id:'';
+    Fig.find({user: userId}).sort('-created').populate('user', 'name username').exec(function(err, figs) {
+      if (err) {
+        return res.json(500, {
+          error: 'Cannot list the figs'
+        });
+      }
+      res.json(figs);
+    });
+  });
 };
 
 /**
