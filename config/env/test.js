@@ -1,7 +1,9 @@
 'use strict';
 
 module.exports = {
-  db: 'mongodb://localhost/mean-test',
+  db: process.env.DB_1_PORT_27017_TCP_ADDR ?
+    'mongodb://'+process.env.DB_1_PORT_27017_TCP_ADDR+'/fpm-test' :
+    'mongodb://localhost/fpm-test',
   port: 3001,
   app: {
     name: 'MEAN - A Modern Stack - Test'

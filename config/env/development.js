@@ -1,7 +1,9 @@
 'use strict';
 
 module.exports = {
-  db: 'mongodb://localhost/mean-dev1',
+  db: process.env.DB_1_PORT_27017_TCP_ADDR ?
+    'mongodb://'+process.env.DB_1_PORT_27017_TCP_ADDR+'/fpm-dev1' :
+    'mongodb://localhost/fpm-dev1',
   mongoose: {
     debug: true
   },
