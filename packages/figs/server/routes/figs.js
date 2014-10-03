@@ -1,6 +1,7 @@
 'use strict';
 
 var figs = require('../controllers/figs');
+var collections = require('../controllers/collections');
 
 // Fig authorization helpers
 var hasAuthorization = function(req, res, next) {
@@ -12,16 +13,24 @@ var hasAuthorization = function(req, res, next) {
 
 module.exports = function(Figs, app, auth) {
 
-  app.route('/figs')
+  app.route('/v1/figs')
     .get(figs.all)
     .post(auth.requiresLogin, figs.create);
-  // app.route('/figs/:figId')
-    // .get(figs.show)
-  app.route('/figs/:user')
-    .get(figs.showUserFigs)
+
+  app.route('/v1/figs/:figId')
+    .get(figs.show)
     .put(auth.requiresLogin, hasAuthorization, figs.update)
     .delete(auth.requiresLogin, hasAuthorization, figs.destroy);
 
+  app.route('/v1/c/')
+    .get(figs.all);
+
+  app.route('/v1/c/:user')
+    .get(collections.showUserFigs);
+
+  app.route('/v1/c/:user/:name/')
+    .get(collections.show);
+
   // Finish with setting up the figId param
-  // app.param('user', figs.fig);
+  app.param('figId', figs.fig);
 };
