@@ -33,7 +33,7 @@ angular.module('mean.figs').config(['$stateProvider',
         }
       })
       .state('create fig', {
-        url: '/figs/create',
+        url: '/figs/:repoId/create',
         templateUrl: 'figs/views/create.html',
         resolve: {
           loggedin: checkLoggedin

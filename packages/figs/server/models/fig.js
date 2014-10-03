@@ -19,6 +19,10 @@ var FigSchema = new Schema({
     type: Schema.ObjectId,
     ref: 'User'
   },
+  repo: {
+    type: Schema.ObjectId,
+    ref: 'Repo'
+  },
   version: {
     type: String,
     required: true,

@@ -16,6 +16,7 @@ angular.module('mean.figs').controller('FigsController', ['$scope', '$stateParam
     $scope.create = function(isValid) {
       if (isValid) {
         var fig = new Figs({
+          repo: $stateParams.repoId,
           version: this.version,
           content: this.content
         });
