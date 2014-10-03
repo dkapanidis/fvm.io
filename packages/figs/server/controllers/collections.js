@@ -14,7 +14,7 @@ exports.show = function(req, res) {
   User.findOne({username: req.params.user}, function(err, user) {
     var userId = user? user._id:'';
     Fig.findOne({user: userId, name: req.params.name}).populate('user', 'username').exec(function(err, fig) {
-    if (err) {
+    if (err || !fig) {
       return res.json(500, {
         error: 'Cannot list the fig'
       });
