@@ -53,7 +53,7 @@
         'fetched from XHR', function() {
 
           // test expected GET request
-          $httpBackend.expectGET('figs').respond([{
+          $httpBackend.expectGET('/v1\/figs').respond([{
             name: 'An Fig about MEAN',
             content: 'MEAN rocks!'
           }]);
@@ -84,7 +84,7 @@
           };
 
           // test expected GET request with response object
-          $httpBackend.expectGET(/figs\/([0-9a-fA-F]{24})$/).respond(testFigData());
+          $httpBackend.expectGET(/v1\/figs\/([0-9a-fA-F]{24})$/).respond(testFigData());
 
           // run controller
           scope.findOne();
@@ -121,7 +121,7 @@
           scope.content = 'MEAN rocks!';
 
           // test post request is sent
-          $httpBackend.expectPOST('figs', postFigData()).respond(responseFigData());
+          $httpBackend.expectPOST('/v1\/figs', postFigData()).respond(responseFigData());
 
           // Run controller
           scope.create(true);
@@ -153,7 +153,7 @@
         scope.fig = fig;
 
         // test PUT happens correctly
-        $httpBackend.expectPUT(/figs\/([0-9a-fA-F]{24})$/).respond();
+        $httpBackend.expectPUT(/v1\/figs\/([0-9a-fA-F]{24})$/).respond();
 
         // testing the body data is out for now until an idea for testing the dynamic updated array value is figured out
         //$httpBackend.expectPUT(/figs\/([0-9a-fA-F]{24})$/, putFigData()).respond();
@@ -185,7 +185,7 @@
           scope.figs.push(fig);
 
           // test expected rideshare DELETE request
-          $httpBackend.expectDELETE(/figs\/([0-9a-fA-F]{24})$/).respond(204);
+          $httpBackend.expectDELETE(/v1\/figs\/([0-9a-fA-F]{24})$/).respond(204);
 
           // run controller
           scope.remove(fig);

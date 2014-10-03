@@ -37,6 +37,7 @@ angular.module('mean.figs').controller('FigsController', ['$scope', '$stateParam
             $scope.figs.splice(i, 1);
           }
         }
+          $location.path('figs');
       } else {
         $scope.fig.$remove(function(response) {
           $location.path('figs');
