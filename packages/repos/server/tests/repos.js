@@ -29,9 +29,8 @@ describe('<Unit Test>', function() {
 
       user.save(function() {
         repo = new Repo({
-          name: 'Repo Name',
-          content: 'Repo Content',
-          version: '1.0.0',
+          name: 'reponame',
+          description: 'Repo Description',
           user: user
         });
 
@@ -43,8 +42,8 @@ describe('<Unit Test>', function() {
       it('should be able to save without problems', function(done) {
         return repo.save(function(err) {
           should.not.exist(err);
-          repo.name.should.equal('Repo Name');
-          repo.content.should.equal('Repo Content');
+          repo.name.should.equal('reponame');
+          repo.description.should.equal('Repo Description');
           repo.user.should.not.have.length(0);
           repo.created.should.not.have.length(0);
           done();
@@ -60,8 +59,8 @@ describe('<Unit Test>', function() {
         });
       });
 
-      it('should be able to show an error when try to save without content', function(done) {
-        repo.content = '';
+      it('should be able to show an error when try to save without description', function(done) {
+        repo.description = '';
 
         return repo.save(function(err) {
           should.exist(err);

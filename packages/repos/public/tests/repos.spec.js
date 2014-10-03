@@ -49,13 +49,12 @@
 
       }));
 
-      it('$scope.find() should create an array with at least one repo object ' +
-        'fetched from XHR', function() {
+      it('$scope.find() should create an array with at least one repo object fetched from XHR', function() {
 
           // test expected GET request
           $httpBackend.expectGET('/v1\/repos').respond([{
             name: 'An Repo about MEAN',
-            content: 'MEAN rocks!'
+            description: 'MEAN rocks!'
           }]);
 
           // run controller
@@ -65,13 +64,12 @@
           // test scope value
           expect(scope.repos).toEqualData([{
             name: 'An Repo about MEAN',
-            content: 'MEAN rocks!'
+            description: 'MEAN rocks!'
           }]);
 
         });
 
-      it('$scope.findOne() should create an array with one repo object fetched ' +
-        'from XHR using a repoId URL parameter', function() {
+      it('$scope.findOne() should create an array with one repo object fetched from XHR using a repoId URL parameter', function() {
           // fixture URL parament
           $stateParams.repoId = '525a8422f6d0f87f0e407a33';
 
@@ -79,7 +77,7 @@
           var testRepoData = function() {
             return {
               name: 'An Repo about MEAN',
-              content: 'MEAN rocks!'
+              description: 'MEAN rocks!'
             };
           };
 
@@ -95,15 +93,13 @@
 
         });
 
-      it('$scope.create() with valid form data should send a POST request ' +
-        'with the form input values and then ' +
-        'locate to new object URL', function() {
+      it('$scope.create() with valid form data should send a POST request with the form input values and then locate to new object URL', function() {
 
           // fixture expected POST data
           var postRepoData = function() {
             return {
               name: 'An Repo about MEAN',
-              content: 'MEAN rocks!'
+              description: 'MEAN rocks!'
             };
           };
 
@@ -112,13 +108,13 @@
             return {
               _id: '525cf20451979dea2c000001',
               name: 'An Repo about MEAN',
-              content: 'MEAN rocks!'
+              description: 'MEAN rocks!'
             };
           };
 
           // fixture mock form input values
           scope.name = 'An Repo about MEAN';
-          scope.content = 'MEAN rocks!';
+          scope.description = 'MEAN rocks!';
 
           // test post request is sent
           $httpBackend.expectPOST('/v1\/repos', postRepoData()).respond(responseRepoData());
@@ -129,7 +125,7 @@
 
           // test form input(s) are reset
           expect(scope.name).toEqual('');
-          expect(scope.content).toEqual('');
+          expect(scope.description).toEqual('');
 
           // test URL location to new object
           expect($location.path()).toBe('/repos/' + responseRepoData()._id);
@@ -172,8 +168,7 @@
 
       }));
 
-      it('$scope.remove() should send a DELETE request with a valid repoId ' +
-        'and remove the repo from the scope', inject(function(Repos) {
+      it('$scope.remove() should send a DELETE request with a valid repoId and remove the repo from the scope', inject(function(Repos) {
 
           // fixture rideshare
           var repo = new Repos({

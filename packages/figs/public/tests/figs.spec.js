@@ -54,7 +54,7 @@
 
           // test expected GET request
           $httpBackend.expectGET('/v1\/figs').respond([{
-            name: 'An Fig about MEAN',
+            version: '1.0.0',
             content: 'MEAN rocks!'
           }]);
 
@@ -64,7 +64,7 @@
 
           // test scope value
           expect(scope.figs).toEqualData([{
-            name: 'An Fig about MEAN',
+            version: '1.0.0',
             content: 'MEAN rocks!'
           }]);
 
@@ -78,7 +78,7 @@
           // fixture response object
           var testFigData = function() {
             return {
-              name: 'An Fig about MEAN',
+              version: '1.0.0',
               content: 'MEAN rocks!'
             };
           };
@@ -102,7 +102,7 @@
           // fixture expected POST data
           var postFigData = function() {
             return {
-              name: 'An Fig about MEAN',
+              version: '1.0.0',
               content: 'MEAN rocks!'
             };
           };
@@ -111,13 +111,13 @@
           var responseFigData = function() {
             return {
               _id: '525cf20451979dea2c000001',
-              name: 'An Fig about MEAN',
+              version: '1.0.0',
               content: 'MEAN rocks!'
             };
           };
 
           // fixture mock form input values
-          scope.name = 'An Fig about MEAN';
+          scope.version = '1.0.0';
           scope.content = 'MEAN rocks!';
 
           // test post request is sent
@@ -128,7 +128,7 @@
           $httpBackend.flush();
 
           // test form input(s) are reset
-          expect(scope.name).toEqual('');
+          expect(scope.version).toEqual('');
           expect(scope.content).toEqual('');
 
           // test URL location to new object
@@ -141,7 +141,7 @@
         var putFigData = function() {
           return {
             _id: '525a8422f6d0f87f0e407a33',
-            name: 'An Fig about MEAN',
+            version: '1.0.0',
             to: 'MEAN is great!'
           };
         };
