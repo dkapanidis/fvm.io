@@ -1,0 +1,21 @@
+<section data-ng-controller="ReposController" data-ng-init="find()">
+  <ul class="repos unstyled">
+    <li data-ng-repeat="repo in repos">
+      <span>{{repo.created | date:'medium'}}</span> /
+      <span>{{repo.user.name}}</span>
+      <h2>
+        <a data-ng-href="#!/repos/{{repo._id}}">{{repo.name}}</a>
+        <span data-ng-if="hasAuthorization(repo)">
+          <a class="btn" href="/#!/repos/{{repo._id}}/edit">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn" data-ng-click="remove(repo);">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </span>
+      </h2>
+      <div>{{repo.content}}</div>
+    </li>
+  </ul>
+  <h1 data-ng-hide="!repos || repos.length">No repos yet. <br> Why don't you <a href="/#!/repos/create">Create One</a>?</h1>
+</section>
