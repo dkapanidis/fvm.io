@@ -65,7 +65,7 @@ angular.module('mean.figs').controller('FigsController', ['$scope', '$stateParam
     };
 
     $scope.find = function() {
-      Figs.query(function(figs) {
+      Figs.query({repo: $stateParams.repoId}, function(figs) {
         $scope.figs = figs;
       });
     };

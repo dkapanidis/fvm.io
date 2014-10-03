@@ -103,7 +103,7 @@ exports.showUserFigs = function(req, res) {
  * List of Figs
  */
 exports.all = function(req, res) {
-  Fig.find().sort('-created').populate('user', 'name username').exec(function(err, figs) {
+  Fig.find({repo: req.query.repo}).sort('-created').populate('user', 'name username').exec(function(err, figs) {
     if (err) {
       return res.json(500, {
         error: 'Cannot list the figs'

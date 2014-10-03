@@ -31,6 +31,6 @@
       <div>{{fig.content}}</div>
     </li>
   </ul>
-  <h1 data-ng-hide="!figs || figs.length">No figs yet. <br> Why don't you <a href="/#!/figs/create">Create One</a>?</h1>
+  <h1 data-ng-hide="!figs || figs.length">No figs yet. <br> Why don't you <a ui-sref="create fig({repoId: repo._id})">Create One</a>?</h1>
 </section>
 </section>
