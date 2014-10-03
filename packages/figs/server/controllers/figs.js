@@ -88,7 +88,7 @@ exports.show = function(req, res) {
 exports.showUserFigs = function(req, res) {
   User.findOne({username: req.params.user}, function(err, user) {
     var userId = user? user._id:'';
-    Fig.find({user: userId}).sort('-created').populate('user', 'name username').exec(function(err, figs) {
+    Fig.find({user: userId}).sort('-created').populate('repo', 'name description').populate('user', 'name username').exec(function(err, figs) {
       if (err) {
         return res.json(500, {
           error: 'Cannot list the figs'
@@ -103,7 +103,7 @@ exports.showUserFigs = function(req, res) {
  * List of Figs
  */
 exports.all = function(req, res) {
-  Fig.find({repo: req.query.repo}).sort('-created').populate('user', 'name username').exec(function(err, figs) {
+  Fig.find({repo: req.query.repo}).sort('-created').populate('repo', 'name description').populate('user', 'name username').exec(function(err, figs) {
     if (err) {
       return res.json(500, {
         error: 'Cannot list the figs'

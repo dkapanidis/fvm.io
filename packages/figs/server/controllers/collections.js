@@ -13,7 +13,7 @@ var mongoose = require('mongoose'),
 exports.showUserFigs = function(req, res) {
   User.findOne({username: req.params.user}, function(err, user) {
     var userId = user? user._id:'';
-    Fig.find({user: userId}).sort('-created').populate('user', 'username').exec(function(err, figs) {
+    Fig.find({user: userId}).sort('-created').populate('repo', 'name description').populate('user', 'username').exec(function(err, figs) {
       if (err) {
         return res.json(500, {
           error: 'Cannot list the figs'
@@ -30,7 +30,7 @@ exports.showUserFigs = function(req, res) {
 exports.show = function(req, res) {
   User.findOne({username: req.params.user}, function(err, user) {
     var userId = user? user._id:'';
-    Fig.findOne({user: userId, name: req.params.name}).populate('user', 'username').exec(function(err, fig) {
+    Fig.findOne({user: userId, name: req.params.name}).populate('repo', 'name description').populate('user', 'username').exec(function(err, fig) {
     if (err || !fig) {
       return res.json(500, {
         error: 'Cannot list the fig'
