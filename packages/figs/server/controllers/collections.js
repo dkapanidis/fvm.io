@@ -59,6 +59,8 @@ exports.showFigByUserNameAndVersion = function(req, res) {
           error: 'Cannot list the fig'
         });
       }
+
+      res.attachment('fig.yml');
       res.send(fig.content);
       });
     });
