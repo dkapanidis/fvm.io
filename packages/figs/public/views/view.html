@@ -1,7 +1,7 @@
 <section data-ng-controller="FigsController" data-ng-init="findOne()">
   <span>{{fig.created | date:'medium'}}</span> /
   <span>{{fig.user.name}}</span>
-  <h2>{{fig.name}}</h2>
+  <h2>{{fig.version}}</h2>
   <div data-ng-if="hasAuthorization(fig)">
     <a class="btn" href="/#!/figs/{{fig._id}}/edit">
       <i class="glyphicon glyphicon-edit"></i>

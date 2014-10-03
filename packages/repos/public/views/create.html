@@ -7,7 +7,23 @@
         <div ng-show="submitted && repoForm.name.$invalid" class="help-block">
           <p ng-show="repoForm.name.$error.required">Name is required</p>
         </div>
-      </div>
+       <div class="help-block">
+          <p>New unique Repo name; 3 - 30 characters. Only lowercase letters, digits and _ - . characters are allowed</p>
+        </div>
+       </div>
+
+    </div>
+    <div class="form-group" ng-class="{ 'has-error' : submitted && repoForm.description.$invalid }">
+      <label mean-token="'create-description'" class="col-md-3 control-label">Description</label>
+      <div class="col-md-9">
+        <input description="description" type="text" class="form-control" data-ng-model="description" id="description" placeholder="Description" required>
+        <div ng-show="submitted && repoForm.description.$invalid" class="help-block">
+          <p ng-show="repoForm.description.$error.required">Description is required</p>
+        </div>
+        <div class="help-block">
+          <p>Provide a short description (Limit 100 characters)</p>
+        </div>
+       </div>
 
     </div>
     <div class="form-group">

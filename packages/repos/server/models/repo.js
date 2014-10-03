@@ -18,6 +18,12 @@ var RepoSchema = new Schema({
   name: {
     type: String,
     required: true,
+    trim: true,
+    validate: [ /^([a-z_.]){3,30}$/, 'Invalid Repo name' ]
+  },
+  description: {
+    type: String,
+    required: true,
     trim: true
   },
   user: {
@@ -32,6 +38,10 @@ var RepoSchema = new Schema({
 RepoSchema.path('name').validate(function(name) {
   return !!name;
 }, 'Name cannot be blank');
+
+RepoSchema.path('description').validate(function(description) {
+  return !!description;
+}, 'Description cannot be blank');
 
 /**
  * Statics

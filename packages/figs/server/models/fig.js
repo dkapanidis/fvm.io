@@ -15,35 +15,32 @@ var FigSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  name: {
-    type: String,
-    required: true,
-    trim: true
-  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'
   },
-  versions: [{
-    version: {
-      type: String,
-      required: true,
-      trim: true
-    },
-    content: {
-      type: String,
-      required: true,
-      trim: true
-    },
-  }]
+  version: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  content: {
+    type: String,
+    required: true,
+    trim: true
+  }
 });
 
 /**
  * Validations
  */
-FigSchema.path('name').validate(function(name) {
-  return !!name;
-}, 'Title cannot be blank');
+FigSchema.path('version').validate(function(version) {
+  return !!version;
+}, 'Version cannot be blank');
+
+FigSchema.path('content').validate(function(content) {
+  return !!content;
+}, 'Content cannot be blank');
 
 /**
  * Statics

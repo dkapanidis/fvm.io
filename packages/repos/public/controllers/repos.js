@@ -17,14 +17,14 @@ angular.module('mean.repos').controller('ReposController', ['$scope', '$statePar
       if (isValid) {
         var repo = new Repos({
           name: this.name,
-          versions: this.versions
+          description: this.description
         });
         repo.$save(function(response) {
           $location.path('repos/' + response._id);
         });
 
         this.name = '';
-        this.versions = '';
+        this.description = '';
       } else {
         $scope.submitted = true;
       }
@@ -74,13 +74,6 @@ angular.module('mean.repos').controller('ReposController', ['$scope', '$statePar
         repoId: $stateParams.repoId
       }, function(repo) {
         $scope.repo = repo;
-      });
-    };
-
-    $scope.addVersion = function(repo) {
-      this.versions.push({
-        version: '',
-        repo: ''
       });
     };
   }
