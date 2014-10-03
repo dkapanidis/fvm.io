@@ -26,10 +26,13 @@ module.exports = function(Figs, app, auth) {
     .get(figs.all);
 
   app.route('/v1/c/:user')
-    .get(collections.showUserFigs);
+    .get(collections.showFigsByUser);
 
   app.route('/v1/c/:user/:name/')
-    .get(collections.show);
+    .get(collections.showFigsByUserAndName);
+
+  app.route('/v1/c/:user/:name/:version')
+    .get(collections.showFigByUserNameAndVersion);
 
   // Finish with setting up the figId param
   app.param('figId', figs.fig);
