@@ -3,6 +3,10 @@
 angular.module('mean.figs').controller('FigsController', ['$scope', '$stateParams', '$location', 'Global', 'Figs',
   function($scope, $stateParams, $location, Global, Figs) {
     $scope.global = Global;
+    $scope.versions = [{
+      version: '',
+      file:''
+    }];
 
     $scope.hasAuthorization = function(fig) {
       if (!fig || !fig.user) return false;
@@ -13,16 +17,14 @@ angular.module('mean.figs').controller('FigsController', ['$scope', '$stateParam
       if (isValid) {
         var fig = new Figs({
           name: this.name,
-          version: this.version,
-          content: this.content
+          versions: this.versions
         });
         fig.$save(function(response) {
           $location.path('figs/' + response._id);
         });
 
         this.name = '';
-        this.version = '';
-        this.content = '';
+        this.versions = '';
       } else {
         $scope.submitted = true;
       }
@@ -72,6 +74,13 @@ angular.module('mean.figs').controller('FigsController', ['$scope', '$stateParam
         figId: $stateParams.figId
       }, function(fig) {
         $scope.fig = fig;
+      });
+    };
+
+    $scope.addVersion = function(fig) {
+      this.versions.push({
+        version: '',
+        fig: ''
       });
     };
   }

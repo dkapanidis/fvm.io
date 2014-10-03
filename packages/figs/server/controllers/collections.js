@@ -8,6 +8,23 @@ var mongoose = require('mongoose'),
   User = mongoose.model('User');
 
 /**
+ * List of figs by user
+ */
+exports.showUserFigs = function(req, res) {
+  User.findOne({username: req.params.user}, function(err, user) {
+    var userId = user? user._id:'';
+    Fig.find({user: userId}).sort('-created').populate('user', 'username').exec(function(err, figs) {
+      if (err) {
+        return res.json(500, {
+          error: 'Cannot list the figs'
+        });
+      }
+      res.json(figs);
+    });
+  });
+};
+
+/**
  * Show a fig by user and name
  */
 exports.show = function(req, res) {
@@ -25,18 +42,19 @@ exports.show = function(req, res) {
 };
 
 /**
- * List of figs by user
+ * Show a fig by user, name and version
  */
-exports.showUserFigs = function(req, res) {
+exports.show = function(req, res) {
   User.findOne({username: req.params.user}, function(err, user) {
     var userId = user? user._id:'';
-    Fig.find({user: userId}).sort('-created').populate('user', 'username').exec(function(err, figs) {
-      if (err) {
-        return res.json(500, {
-          error: 'Cannot list the figs'
-        });
-      }
-      res.json(figs);
+    Fig.findOne({user: userId, name: req.params.name}).populate('user', 'username').exec(function(err, fig) {
+    if (err || !fig) {
+      return res.json(500, {
+        error: 'Cannot list the fig'
+      });
+    }
+    res.json(fig);
     });
   });
 };
+
