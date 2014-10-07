@@ -19,7 +19,7 @@ var RepoSchema = new Schema({
     type: String,
     required: true,
     trim: true,
-    validate: [ /^([a-z_.]){3,30}$/, 'Invalid Repo name' ]
+    validate: [ /^([a-z_.-]){3,30}$/, 'Invalid Repo name' ]
   },
   description: {
     type: String,
