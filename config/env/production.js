@@ -44,7 +44,7 @@ module.exports = {
   github: {
     clientID: 'bf50e82fa4983d2c67e9',
     clientSecret: 'ab6ede7c3c8a686b43d5c4d3a5141eb1a2a843ea',
-    callbackURL: 'https://fpm.io/auth/github/callback'
+    callbackURL: 'http://fvm.io/auth/github/callback'
   },
   google: {
     clientID: 'APP_ID',
