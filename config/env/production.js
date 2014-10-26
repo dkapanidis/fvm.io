@@ -2,8 +2,8 @@
 
 module.exports = {
   db: process.env.DB_1_PORT_27017_TCP_ADDR ?
-    'mongodb://'+process.env.DB_1_PORT_27017_TCP_ADDR+'/fpm-prod' :
-    'mongodb://localhost/fpm-prod',
+    'mongodb://'+process.env.DB_1_PORT_27017_TCP_ADDR+'/fvm-prod' :
+    'mongodb://localhost/fvm-prod',
   /**
    * Database options that will be passed directly to mongoose.connect
    * Below are some examples.

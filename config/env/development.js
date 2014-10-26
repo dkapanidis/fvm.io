@@ -2,8 +2,8 @@
 
 module.exports = {
   db: process.env.DB_1_PORT_27017_TCP_ADDR ?
-    'mongodb://'+process.env.DB_1_PORT_27017_TCP_ADDR+'/fpm-dev1' :
-    'mongodb://localhost/fpm-dev1',
+    'mongodb://'+process.env.DB_1_PORT_27017_TCP_ADDR+'/fvm-dev1' :
+    'mongodb://localhost/fvm-dev1',
   mongoose: {
     debug: true
   },

@@ -2,8 +2,8 @@
 
 module.exports = {
   db: process.env.DB_1_PORT_27017_TCP_ADDR ?
-    'mongodb://'+process.env.DB_1_PORT_27017_TCP_ADDR+'/fpm-test' :
-    'mongodb://localhost/fpm-test',
+    'mongodb://'+process.env.DB_1_PORT_27017_TCP_ADDR+'/fvm-test' :
+    'mongodb://localhost/fvm-test',
   port: 3001,
   app: {
     name: 'MEAN - A Modern Stack - Test'
